@@ -234,7 +234,7 @@ Sometimes it’s useful to name each parameter when you *call* a function, to in
 
 If you want users of your function to provide parameter names when they call your function, define an *external parameter name* for each parameter, in addition to the local parameter name. You write an external parameter name before the local parameter name it supports, separated by a space:
 
-如果你希望當使用者呼叫函式的時候提供參數命名的話，除了局部參數名之外，可以透過定義 `*外部參數名 (external parameter name)*` 給每個參數。外部變數名字寫在局部參數名之前，用空白分開。
+如果你希望當使用者呼叫函式的時候提供參數命名的話，除了局部參數名之外，可以透過定義 `*外部參數名* * (external parameter name) *` 給每個參數。外部變數名字寫在局部參數名之前，用空白分開。
 
 ```swift
 func someFunction(externalParameterName localParameterName: Int) {
@@ -250,6 +250,8 @@ func someFunction(externalParameterName localParameterName: Int) {
 >如果你替一個參數提供外部參數名的話，那每次這個函式被呼叫的時候，這個外部參數名都必須要跟著使用。
 
 As an example, consider the following function, which joins two strings by inserting a third “joiner” string between them:
+
+用以下的函數都做例子，這個函式會把傳入的兩個字串用 "joiner" 這個字串變數連接起來：
 
 ```swift
 func join(s1: String, s2: String, joiner: String) -> String {
