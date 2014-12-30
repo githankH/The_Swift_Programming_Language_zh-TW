@@ -230,7 +230,11 @@ However, these parameter names are only used within the body of the function its
 
 Sometimes it’s useful to name each parameter when you *call* a function, to indicate the purpose of each argument you pass to the function.
 
+當你在呼叫函式的時候，替每個變數命名是有幫助的，可以用來表明每個你傳入的參數的目的是什麼。
+
 If you want users of your function to provide parameter names when they call your function, define an *external parameter name* for each parameter, in addition to the local parameter name. You write an external parameter name before the local parameter name it supports, separated by a space:
+
+如果你希望當使用者呼叫函式的時候提供參數命名的話，除了局部參數名之外，可以透過定義 `*外部參數名* * (external parameter name) *` 給每個參數。外部變數名字寫在局部參數名之前，用空白分開。
 
 ```swift
 func someFunction(externalParameterName localParameterName: Int) {
@@ -242,8 +246,12 @@ func someFunction(externalParameterName localParameterName: Int) {
 > **Note**
 >
 > If you provide an external parameter name for a parameter, that external name must *always* be used when calling the function.
+>
+>如果你替一個參數提供外部參數名的話，那每次這個函式被呼叫的時候，這個外部參數名都必須要跟著使用。
 
 As an example, consider the following function, which joins two strings by inserting a third “joiner” string between them:
+
+用以下的函數都做例子，這個函式會把傳入的兩個字串用 "joiner" 這個字串變數連接起來：
 
 ```swift
 func join(s1: String, s2: String, joiner: String) -> String {
@@ -253,12 +261,16 @@ func join(s1: String, s2: String, joiner: String) -> String {
 
 When you call this function, the purpose of the three strings that you pass to the function is unclear:
 
+當你呼叫以下函式的時候，你傳遞給這個函式的三個字串的目的並沒有很清楚的表達：
+
 ```swift
 join("hello", "world", ", ")
 // returns "hello, world"
 ```
 
 To make the purpose of these `String` values clearer, define external parameter names for each `join` function parameter:
+
+為了讓這些 `字串` 的目的更加清楚，下面的函式定義外部參數名給每個 `join` 函式的參數：
 
 ```swift
 func join(string s1: String, toString s2: String, withJoiner joiner: String)
@@ -269,7 +281,11 @@ func join(string s1: String, toString s2: String, withJoiner joiner: String)
 
 In this version of the `join` function, the first parameter has an external name of `string` and a local name of `s1`; the second parameter has an external name of `toString` and a local name of `s2`; and the third parameter has an external name of `withJoiner` and a local name of `joiner`.
 
+在這個 `join` 函式的版本，第一個參數的外部參數名叫做 `string` 和局部變數名 `s1`；第二個參數的外部參數名叫做 `toString` 和局部參數名 `s2`；在第三個參數的外部參數名是 `withJoiner` 和局部參數名 `joiner`。
+
 You can now use these external parameter names to call the function in a clear and unambiguous way:
+
+如此以來，當你呼叫這個函式的時候就可以透過外部參數命名來提供清楚的使用方式。
 
 ```swift
 join(string: "hello", toString: "world", withJoiner: ", ")
@@ -278,15 +294,23 @@ join(string: "hello", toString: "world", withJoiner: ", ")
 
 The use of external parameter names enables this second version of the `join` function to be called in an expressive, sentence-like manner by users of the function, while still providing a function body that is readable and clear in intent.
 
+在第二個版本的 `join` 函式使用外部參數命名的方式，這個方法讓函式的呼叫更加具有表達意義甚至像文章內某個句子。對於函式主體而言，依舊維持簡潔和可讀性的目的。
+
 > **Note**
 >
 > Consider using external parameter names whenever the purpose of a function’s arguments would be unclear to someone reading your code for the first time. You do not need to specify external parameter names if the purpose of each parameter is clear and unambiguous when the function is called.
+>
+>通常是在函式中參數沒有表達出清楚的目的或者是當閱讀程式碼敢到困惑，這時候才會考慮使用外部參數命名來加強。換句話說，如果函式變數已經有清楚的目的也不會讓人混淆不清，那其實是不需要外部變數命名的。
 
-### Shorthand External Parameter Names###
+外部參數名的縮寫（### Shorthand External Parameter Names###）
 
 If you want to provide an external parameter name for a function parameter, and the local parameter name is already an appropriate name to use, you do not need to write the same name twice for that parameter. Instead, write the name once, and prefix the name with a hash symbol (`#`). This tells Swift to use that name as both the local parameter name and the external parameter name.
 
+如果你想對函式的參數提供外部參數名，而局部參數的命名也相當適當的話，那就不需要替這個參數寫兩次重複的名字。取而代之，你可以在參數命名之前加上井字號（`#`）。這是告訴 Swift 外部參數和內部參數使用相同的命名。
+
 This example defines a function called `containsCharacter`, which defines external parameter names for both of its parameters by placing a hash symbol before their local parameter names:
+
+以下是一個叫做 `containsCharacter` 函式的例子，在局部參數名字之前加上井字號用來表示外部參數名也是同樣的命名。
 
 ```swift
 func containsCharacter(#string: String, #characterToFind: Character) -> Bool {
@@ -301,11 +325,14 @@ func containsCharacter(#string: String, #characterToFind: Character) -> Bool {
 
 This function’s choice of parameter names makes for a clear, readable function body, while also enabling the function to be called without ambiguity:
 
+函式的參數命名選擇讓函式內容本身具有可讀性，這同樣也讓函式的呼叫也不會有誤用的情形。
+
 ```swift
 let containsAVee = containsCharacter(string: "aardvark", characterToFind: "v")
 // containsAVee equals true, because "aardvark" contains a "v"
 ```
-### Default Parameter Values###
+
+預設參數值（### Default Parameter Values###）
 
 You can define a *default value* for any parameter as part of a function’s definition. If a default value is defined, you can omit that parameter when calling the function.
 
