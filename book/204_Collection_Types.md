@@ -1,18 +1,19 @@
-# Collection Types
+# 聚集型態
 ---
-Swift provides two *collection types*, known as arrays and dictionaries, for storing collections of values. Arrays store ordered lists of values of the same type. Dictionaries store unordered collections of values of the same type, which can be referenced and looked up through a unique identifier (also known as a key).
+Swift支援兩種*聚集型態*, 像已知的陣列型態以及字典型態,給予容器將值聚集儲存。陣列型態以序列方式儲存相同資料型態的資料。字典型態以無序列方式儲存相同資料型態的資料，它可以使用唯一的識別字從頭到尾尋找並將值取出(但必須知道它的識別字).
 
-Arrays and dictionaries in Swift are always clear about the types of values and keys that they can store. This means that you cannot insert a value of the wrong type into an array or dictionary by mistake. It also means you can be confident about the types of values you will retrieve from an array or dictionary. Swift’s use of explicitly typed collections ensures that your code is always clear about the types of values it can work with and enables you to catch any type mismatches early in your code’s development.
+陣列型態以及字典型態在Swift總是清楚關於型態值和識別字怎麼儲存，意思是你無法加入錯誤的資料型態在陣列或是字典中。也意味著你可以確信型態和值可以復取在陣列或是字典中。
+Swift使用顯示類型聚集確保你的程式碼清楚於型態與值可以工作以及使你早點抓取任何不匹配的型態在你開發程式時。
 
-> **NOTE**
+> **註解**
 > 
-> Swift’s `Array` type exhibits different behavior to other types when assigned to a constant or variable, or when passed to a function or method. For more information, see [Mutability of Collections]() and [Assignment and Copy Behavior for Collection Types]().
+> Swift的`陣列` 型態配置了固定或可變得元素在不同型態下,或在通過凡是或方法的時候都會表現不同的行為。想了解更多訊息，請參考 [Mutability of Collections]() 和 [Assignment and Copy Behavior for Collection Types]().
 
-## Arrays
+## 陣列
 
-An *array* stores multiple values of the same type in an ordered list. The same value can appear in an array multiple times at different positions.
+*陣列*以序列的方式在同個型態中存放著多個值。同樣的值可以在不同的時間以及不同的索引下出現在陣列裡。
 
-Swift arrays are specific about the kinds of values they can store. They differ from Objective-C’s `NSArray` and `NSMutableArray` classes, which can store any kind of object and do not provide any information about the nature of the objects they return. In Swift, the type of values that a particular array can store is always made clear, either through an explicit type annotation, or through type inference, and does not have to be a class type. If you create an array of `Int` values, for example, you can’t insert any value other than `Int` values into that array. Swift arrays are type safe, and are always clear about what they may contain.
+Swift陣列都明確的表示他們儲存值的形態。他們不同於Objective-C的`NSArray`和 `NSMutableArray`類別， which can store any kind of object and do not provide any information about the nature of the objects they return. In Swift, the type of values that a particular array can store is always made clear, either through an explicit type annotation, or through type inference, and does not have to be a class type. If you create an array of `Int` values, for example, you can’t insert any value other than `Int` values into that array. Swift arrays are type safe, and are always clear about what they may contain.
 
 ### Array Type Shorthand Syntax
 
